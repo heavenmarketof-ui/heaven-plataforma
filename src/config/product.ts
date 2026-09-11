@@ -1,0 +1,21 @@
+export const productConfig = {
+  name: "Heaven Plataforma",
+  shortName: "Heaven",
+  description: "ERP SaaS para empresas de decoração e locação de festas",
+  architecture: "multi-tenant",
+  modules: [
+    "hoje",
+    "crm",
+    "clientes",
+    "orcamentos",
+    "contratos",
+    "agenda",
+    "estoque",
+    "producao",
+    "logistica",
+    "financeiro",
+    "gestao",
+    "configuracoes",
+    "saas-admin",
+  ],
+} as const;
