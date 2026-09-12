@@ -1,9 +1,11 @@
 name: Heaven CI
+
 on:
   push:
     branches: [develop, main]
   pull_request:
     branches: [develop, main]
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -12,7 +14,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm install
+      - run: npm install --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run build
