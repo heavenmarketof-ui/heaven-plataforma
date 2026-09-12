@@ -14,7 +14,7 @@ export async function getActiveCompanyContext(userId: string): Promise<ActiveCom
     .select('company_id, role, companies!inner(id, name, status)')
     .eq('user_id', userId)
     .eq('active', true)
-    .eq('companies.status', 'ativa')
+    .in('companies.status', ['trial', 'ativa'])
     .limit(1)
     .maybeSingle()
 
