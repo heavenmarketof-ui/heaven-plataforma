@@ -1,7 +1,13 @@
 # Heaven Plataforma — Visão do Produto
 
 ## Objetivo
-Transformar a experiência operacional validada no Sistema LHL em um ERP SaaS comercial para decoradoras, locadoras e empresas de festas.
+Transformar os aprendizados, fluxos e problemas já validados no Sistema LHL em um ERP SaaS comercial independente para decoradoras, locadoras e empresas de festas.
+
+## Separação obrigatória entre os produtos
+
+O Sistema LHL é apenas referência de processo e laboratório de aprendizado. **Vitor, Josi e a LHL Festas não serão usuários/tenant da Heaven Plataforma.** A Heaven deve ser projetada para clientes externos e não deve depender de dados, nomes, regras, identidade visual, usuários ou infraestrutura operacional da LHL.
+
+Quando um fluxo do Sistema LHL for reaproveitado, devemos extrair o princípio que funcionou e transformá-lo em recurso genérico e configurável. Não devemos copiar particularidades da LHL como regra global do produto.
 
 ## Fluxo principal
 Aquisição → Lead → Atendimento → Orçamento → Cliente → Contrato → Pagamento → Reserva de itens → Agenda → Separação → Retirada/Entrega → Montagem → Devolução → Conferência → Fechamento financeiro → Pós-venda.
@@ -45,4 +51,4 @@ Identidade, dados fiscais, usuários, permissões, catálogo, kits, regras comer
 Tenants, planos, limites, assinaturas, feature flags, suporte, auditoria e métricas da plataforma.
 
 ## Regra arquitetural principal
-Tudo que hoje é uma particularidade da LHL deve virar configuração da empresa, nunca constante global da Heaven. A LHL será tenant de referência e ambiente de validação do produto, não a regra do produto.
+Tudo que for particular de uma decoradora deve virar configuração do tenant, nunca constante global da Heaven. O Sistema LHL permanece fora da Heaven e serve somente como fonte de aprendizados de produto.
