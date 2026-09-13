@@ -1,0 +1,8 @@
+import { supabase } from '../integrations/supabase/client'
+export async function loadCommercialData(){const [leads,clients,quotes]=await Promise.all([supabase.from('leads').select('*').order('created_at',{ascending:false}).limit(100),supabase.from('clients').select('*').order('created_at',{ascending:false}).limit(100),supabase.from('quotes').select('*').order('created_at',{ascending:false}).limit(100)]);const error=leads.error||clients.error||quotes.error;if(error)throw error;return{leads:leads.data??[],clients:clients.data??[],quotes:quotes.data??[]}}
+export async function createLead(companyId:string,input:Record<string,string>){const{data,error}=await supabase.from('leads').insert({company_id:companyId,name:input.name,phone:input.phone,email:input.email||null,city:input.city||null,event_type:input.eventType||null,event_date:input.eventDate||null,notes:input.notes||null,status:'novo'}).select().single();if(error)throw error;return data}
+export async function createQuoteFromLead(leadId:string){const{data,error}=await supabase.rpc('create_quote_from_lead',{target_lead_id:leadId});if(error)throw error;return data}
+export async function convertLeadToClient(leadId:string){const{data,error}=await supabase.rpc('convert_lead_to_client',{target_lead_id:leadId});if(error)throw error;return data}
+export async function updateQuoteTotal(quoteId:string,total:number){const{error}=await supabase.from('quotes').update({subtotal:total,total,updated_at:new Date().toISOString()}).eq('id',quoteId);if(error)throw error}
+export function money(value:number){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value||0)}
+export function shortDate(value:string|null){return value?value.split('-').reverse().join('/'):'—'}
