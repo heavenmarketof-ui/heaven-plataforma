@@ -5,16 +5,17 @@ import {
   createRootRoute,
 } from '@tanstack/react-router'
 import '../styles.css'
+import '../brand-overrides.css'
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Heaven Plataforma' },
+      { title: 'Heaven ERP' },
       {
         name: 'description',
-        content: 'Gestão completa para decoradores e empresas de eventos.',
+        content: 'Gestão de festas e decorações — da reserva à devolução em um só lugar.',
       },
     ],
   }),
