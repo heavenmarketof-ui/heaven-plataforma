@@ -49,7 +49,7 @@ function LoginPage() {
       <div className="trial-wrap">
         <div className="trial-card login-card">
           <Link to="/" className="back">← Início</Link>
-          <div className="brand">heaven <small>PLATAFORMA</small></div>
+          <img src="/heaven-logo.svg" alt="Heaven ERP — Gestão de Festas e Decorações" style={{ width: '245px', maxWidth: '82%', height: 'auto', display: 'block', margin: '28px 0 12px' }} />
           <span className="tag">Acesso seguro</span>
           <h1>Entre na sua Heaven</h1>
           <p>Use o e-mail confirmado para acessar sua empresa.</p>
