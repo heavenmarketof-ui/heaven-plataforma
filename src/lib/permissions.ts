@@ -1,32 +1,19 @@
-export type CompanyRole = 'proprietario' | 'administrador' | 'gerente' | 'equipe'
+export type CompanyRole = 'proprietario' | 'admin' | 'administrador' | 'gerente' | 'comercial' | 'operacao' | 'financeiro' | 'visualizador' | 'equipe'
+export type Module = 'comercial' | 'operacao' | 'financeiro' | 'fiscal' | 'configuracoes' | 'equipe'
 
-export const ROLE_LABELS: Record<CompanyRole, string> = {
-  proprietario: 'Proprietário',
-  administrador: 'Administrador',
-  gerente: 'Gerente',
-  equipe: 'Equipe',
+export const ROLE_LABELS: Record<CompanyRole,string>={proprietario:'Proprietário',admin:'Administrador',administrador:'Administrador',gerente:'Gerente',comercial:'Comercial',operacao:'Operação',financeiro:'Financeiro',visualizador:'Visualizador',equipe:'Equipe'}
+const managers:CompanyRole[]=['proprietario','admin','administrador','gerente']
+const access:Record<Module,CompanyRole[]>={
+ comercial:[...managers,'comercial','visualizador'],
+ operacao:[...managers,'comercial','operacao','visualizador','equipe'],
+ financeiro:[...managers,'financeiro'],
+ fiscal:[...managers,'financeiro'],
+ configuracoes:['proprietario','admin','administrador'],
+ equipe:['proprietario','admin','administrador'],
 }
-
-const roleWeight: Record<CompanyRole, number> = {
-  equipe: 10,
-  gerente: 20,
-  administrador: 30,
-  proprietario: 40,
-}
-
-export function hasMinimumRole(currentRole: CompanyRole | null | undefined, minimumRole: CompanyRole) {
-  if (!currentRole) return false
-  return roleWeight[currentRole] >= roleWeight[minimumRole]
-}
-
-export function canManageBusiness(currentRole: CompanyRole | null | undefined) {
-  return hasMinimumRole(currentRole, 'gerente')
-}
-
-export function canManageTeam(currentRole: CompanyRole | null | undefined) {
-  return hasMinimumRole(currentRole, 'administrador')
-}
-
-export function canManageSubscription(currentRole: CompanyRole | null | undefined) {
-  return currentRole === 'proprietario'
-}
+export function canAccess(role:string|null|undefined,module:Module){return !!role&&access[module].includes(role as CompanyRole)}
+export function canWrite(role:string|null|undefined,module:Exclude<Module,'configuracoes'|'equipe'>){return canAccess(role,module)&&role!=='visualizador'}
+export function canManageBusiness(role:string|null|undefined){return !!role&&managers.includes(role as CompanyRole)}
+export function canManageTeam(role:string|null|undefined){return canAccess(role,'equipe')}
+export function canManageSubscription(role:string|null|undefined){return role==='proprietario'}
+export function roleLabel(role:string|null|undefined){return ROLE_LABELS[role as CompanyRole]||role||'Usuário'}
