@@ -10,3 +10,7 @@ export async function inviteMember(companyId:string,email:string,role:string){co
 export async function cancelInvitation(companyId:string,id:string){const{error}=await supabase.rpc('cancel_company_invite',{target_company_id:companyId,target_invite_id:id});if(error)throw error}
 export async function setMemberRole(companyId:string,userId:string,role:string,active=true){const{error}=await supabase.rpc('update_company_member',{target_company_id:companyId,target_user_id:userId,new_role:role,new_active:active});if(error)throw error}
 export async function setMemberActive(companyId:string,userId:string,active:boolean,role:string){const{error}=await supabase.rpc('update_company_member',{target_company_id:companyId,target_user_id:userId,new_role:role,new_active:active});if(error)throw error}
+
+export async function setModalityActive(id:string,active:boolean){const{error}=await supabase.from('business_modalities').update({active}).eq('id',id);if(error)throw error}
+export async function setPackageActive(id:string,active:boolean){const{error}=await supabase.from('service_packages').update({active}).eq('id',id);if(error)throw error}
+export async function setRuleActive(id:string,active:boolean){const{error}=await supabase.from('business_rules').update({active}).eq('id',id);if(error)throw error}
