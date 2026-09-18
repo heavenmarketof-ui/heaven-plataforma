@@ -30,3 +30,5 @@ export async function addPackageInventoryItem(companyId:string,packageId:string,
 export async function removePackageInventoryItem(id:string){const{error}=await supabase.from('service_package_items').delete().eq('id',id);if(error)throw error}
 export async function addPackageToQuote(quoteId:string,packageId:string){const{data,error}=await supabase.rpc('add_package_to_quote',{target_quote_id:quoteId,target_package_id:packageId});if(error)throw error;return data}
 export async function reservePackageInventory(eventId:string){const{data,error}=await supabase.rpc('reserve_contract_package_inventory',{target_event_id:eventId});if(error)throw error;return data}
+
+export async function checkEventInventoryConflicts(eventId:string){const{data,error}=await supabase.rpc('check_event_inventory_conflicts',{target_event_id:eventId});if(error)throw error;return Array.isArray(data)?data:[]}
