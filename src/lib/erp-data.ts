@@ -24,3 +24,9 @@ export async function createFiscalDraft(companyId:string,input:Record<string,str
 export async function setFiscalNoteStatus(id:string,status:'rascunho'|'pendente_emissao'){const{error}=await supabase.from('fiscal_notes').update({status,updated_at:new Date().toISOString()}).eq('id',id);if(error)throw error}
 export function money(value:number){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value||0)}
 export function shortDate(value:string|null){if(!value)return '—';return value.slice(0,10).split('-').reverse().join('/')}
+
+export async function loadCatalogData(){const[p,pi]=await Promise.all([supabase.from('service_packages').select('*').eq('active',true).order('display_order'),supabase.from('service_package_items').select('*')]);if(p.error)throw p.error;if(pi.error)throw pi.error;return{packages:p.data||[],packageItems:pi.data||[]}}
+export async function addPackageInventoryItem(companyId:string,packageId:string,itemId:string,quantity:number){const{error}=await supabase.from('service_package_items').upsert({company_id:companyId,package_id:packageId,item_id:itemId,quantity},{onConflict:'package_id,item_id'});if(error)throw error}
+export async function removePackageInventoryItem(id:string){const{error}=await supabase.from('service_package_items').delete().eq('id',id);if(error)throw error}
+export async function addPackageToQuote(quoteId:string,packageId:string){const{data,error}=await supabase.rpc('add_package_to_quote',{target_quote_id:quoteId,target_package_id:packageId});if(error)throw error;return data}
+export async function reservePackageInventory(eventId:string){const{data,error}=await supabase.rpc('reserve_contract_package_inventory',{target_event_id:eventId});if(error)throw error;return data}
