@@ -25,7 +25,9 @@ function Agenda() {
   const [data, setData] = useState<any>({ events: [], clients: [], tasks: [], reservations: [] })
   const [error, setError] = useState('')
   const [month, setMonth] = useState(() => new Date().toISOString().slice(0, 7))
-  const [selected, setSelected] = useState<Row | null>(null)\n  const [reserving, setReserving] = useState(false)\n  const [busy, setBusy] = useState(false)
+  const [selected, setSelected] = useState<Row | null>(null)
+  const [reserving, setReserving] = useState(false)
+  const [busy, setBusy] = useState(false)
 
   useEffect(() => {
     void (async () => {
@@ -71,7 +73,8 @@ function Agenda() {
     return <Gate text="Seu perfil não possui acesso à agenda." />
   }
 
-  const write = canWrite(ctx.role, 'comercial')\n  const today = new Date().toISOString().slice(0, 10)
+  const write = canWrite(ctx.role, 'comercial')
+  const today = new Date().toISOString().slice(0, 10)
   const upcoming = data.events
     .filter((event: Row) => event.event_date >= today && !['finalizado', 'cancelado'].includes(event.status))
     .sort((a: Row, b: Row) => String(a.event_date).localeCompare(String(b.event_date)))
@@ -140,7 +143,19 @@ function Agenda() {
         </section>
       </main>
 
-      {selected && <EventSummary event={selected} data={data} write={write} reserving={reserving} busy={busy} close={() => { setSelected(null); setReserving(false) }} startReserve={() => setReserving(true)} saveReserve={async (itemId, quantity) => {\n        setBusy(true)\n        setError('')\n        try {\n          const start = new Date(selected.event_date + 'T00:00:00').toISOString()\n          const end = new Date(selected.event_date + 'T23:59:59').toISOString()\n          await reserveInventory(ctx.company_id, selected.id, itemId, quantity, start, end)\n          setData(await loadCommercialData())\n          setReserving(false)\n        } catch (e: any) {\n          setError(e.message || 'Não foi possível reservar a peça.')\n        } finally { setBusy(false) }\n      }} />}
+      {selected && <EventSummary event={selected} data={data} write={write} reserving={reserving} busy={busy} close={() => { setSelected(null); setReserving(false) }} startReserve={() => setReserving(true)} saveReserve={async (itemId, quantity) => {
+        setBusy(true)
+        setError('')
+        try {
+          const start = new Date(selected.event_date + 'T00:00:00').toISOString()
+          const end = new Date(selected.event_date + 'T23:59:59').toISOString()
+          await reserveInventory(ctx.company_id, selected.id, itemId, quantity, start, end)
+          setData(await loadCommercialData())
+          setReserving(false)
+        } catch (e: any) {
+          setError(e.message || 'Não foi possível reservar a peça.')
+        } finally { setBusy(false) }
+      }} />}
     </div>
   )
 }
@@ -155,7 +170,12 @@ function EventSummary({ event, data, write, reserving, busy, close, startReserve
         <div className="card-head"><div><span className="erp-section-kicker">EVENTO</span><h2>{event.title}</h2></div><button onClick={close}>×</button></div>
         <div className="event-drawer-status"><span className="heaven-status">{labels[event.status] || event.status}</span><b>{shortDate(event.event_date)} {event.event_time?.slice(0, 5) || ''}</b></div>
         <div className="event-detail-grid"><D label="Cliente" value={client?.name || 'Não vinculado'} /><D label="Local" value={[event.address, event.city, event.state].filter(Boolean).join(' · ') || 'A definir'} /><D label="Reservas" value={String(reservations.length)} /><D label="Tarefas abertas" value={String(tasks.length)} /></div>
-        <h3>Acervo reservado</h3>\n        {reservations.map((reservation: Row) => { const item = data.inventory.find((x: Row) => x.id === reservation.item_id); return <div className="heaven-task" key={reservation.id}><div><b>{item?.name || 'Peça'}</b><small>{reservation.quantity} unidade(s)</small></div></div> })}\n        {!reservations.length && <p className="heaven-muted">Nenhuma peça reservada.</p>}\n        {write && !reserving && <button className="primary drawer-action" onClick={startReserve}>+ Reservar peça</button>}\n        {write && reserving && <form className="trial-form drawer-form" onSubmit={(e) => { e.preventDefault(); const form = new FormData(e.currentTarget); void saveReserve(String(form.get('itemId') || ''), Number(form.get('quantity') || 1)) }}><label>Peça<select name="itemId" required>{data.inventory.map((item: Row) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label><label>Quantidade<input name="quantity" type="number" min="1" defaultValue="1" required /></label><button className="primary" disabled={busy}>{busy ? 'Reservando...' : 'Confirmar reserva'}</button></form>}\n        <div className="drawer-links"><Link to="/operacoes">Produção e devolução</Link><Link to="/acervo">Consultar acervo</Link><Link to="/financeiro">Financeiro</Link></div>
+        <h3>Acervo reservado</h3>
+        {reservations.map((reservation: Row) => { const item = data.inventory.find((x: Row) => x.id === reservation.item_id); return <div className="heaven-task" key={reservation.id}><div><b>{item?.name || 'Peça'}</b><small>{reservation.quantity} unidade(s)</small></div></div> })}
+        {!reservations.length && <p className="heaven-muted">Nenhuma peça reservada.</p>}
+        {write && !reserving && <button className="primary drawer-action" onClick={startReserve}>+ Reservar peça</button>}
+        {write && reserving && <form className="trial-form drawer-form" onSubmit={(e) => { e.preventDefault(); const form = new FormData(e.currentTarget); void saveReserve(String(form.get('itemId') || ''), Number(form.get('quantity') || 1)) }}><label>Peça<select name="itemId" required>{data.inventory.map((item: Row) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label><label>Quantidade<input name="quantity" type="number" min="1" defaultValue="1" required /></label><button className="primary" disabled={busy}>{busy ? 'Reservando...' : 'Confirmar reserva'}</button></form>}
+        <div className="drawer-links"><Link to="/operacoes">Produção e devolução</Link><Link to="/acervo">Consultar acervo</Link><Link to="/financeiro">Financeiro</Link></div>
       </aside>
     </div>
   )
