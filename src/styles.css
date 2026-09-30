@@ -46,3 +46,30 @@
 /* Checklist físico: separação, saída e devolução */
 .item-checklist{display:grid;border:1px solid var(--line);border-radius:12px;overflow:hidden}.item-check-row{display:grid;grid-template-columns:minmax(180px,1.5fr) repeat(3,minmax(115px,.7fr)) 90px;align-items:center;gap:10px;padding:12px;background:#fff;border-top:1px solid #edf1f6}.item-check-row:first-child{border-top:0}.item-check-name{display:grid}.item-check-name b{font-size:10px}.item-check-name small{font-size:8px;color:#8291a4;margin-top:3px}.item-stage{display:grid;justify-items:center}.item-stage>small{font-size:8px;color:#8291a4;margin-bottom:4px}.item-stage>div{display:flex;align-items:center;gap:5px}.item-stage button{width:24px;height:24px;border:1px solid var(--line);background:#f8fafc;color:var(--blue);border-radius:6px;font-weight:800}.item-stage b{min-width:34px;text-align:center;font-size:9px}.item-stage em{font-style:normal;font-size:7px;color:#4d8668;margin-top:3px}.item-check-state{font-size:8px;text-align:center;background:#eef2f7;color:#7b8b9e;border-radius:99px;padding:6px}.item-check-state.ok{background:#e9f4ee;color:#4d8668}.item-check-state.warn{background:#fff3e7;color:#a76d38}
 @media(max-width:900px){.item-checklist{overflow:auto}.item-check-row{min-width:780px}}
+
+/* Final ERP responsive shell */
+@media(max-width:900px){
+ .heaven-shell{display:block;padding-bottom:72px}
+ .heaven-sidebar{position:relative;top:auto;height:auto;min-height:0;padding:14px 16px;display:flex;align-items:center;gap:12px;overflow-x:auto}
+ .heaven-sidebar .sidebar-logo,.erp-sidebar-logo{width:150px;min-width:150px;margin:0}
+ .heaven-sidebar .heaven-nav,.erp-nav{display:flex!important;gap:6px;margin:0;overflow-x:auto;white-space:nowrap;flex:1}
+ .heaven-sidebar .heaven-nav a,.heaven-sidebar .heaven-nav button,.heaven-sidebar .heaven-nav b{min-width:max-content;padding:9px 11px}
+ .erp-menu-label,.heaven-company,.erp-company,.settings-back{display:none!important}
+ .heaven-main{padding:20px 16px;overflow:visible}
+ .heaven-header{align-items:flex-start;flex-wrap:wrap}
+ .heaven-title{font-size:26px}
+ .heaven-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .heaven-columns,.settings-columns,.flow-grid,.sales-pipeline,.customer-grid,.kit-builder-grid{grid-template-columns:1fr!important}
+ .agenda-calendar{min-width:760px}.agenda-card{overflow:auto}
+ .workspace-actions{flex-wrap:wrap}
+}
+@media(max-width:560px){
+ .heaven-kpis{grid-template-columns:1fr}
+ .heaven-main{padding:16px 12px}
+ .heaven-card{padding:15px;border-radius:13px}
+ .heaven-title{font-size:23px}
+ .form-grid{grid-template-columns:1fr}
+ .workspace-tabs,.commercial-tabs{overflow-x:auto;white-space:nowrap}
+ .modal-backdrop{padding:8px}.modal-card{padding:17px;border-radius:14px}
+ .table-scroll{margin-left:-6px;margin-right:-6px}
+}
