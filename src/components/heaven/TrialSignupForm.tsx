@@ -109,7 +109,7 @@ export function TrialSignupForm({ compact = false }: TrialSignupFormProps) {
       <label>Senha<input required name="password" type="password" minLength={8} autoComplete="new-password" placeholder="Mínimo de 8 caracteres" /></label>
       {error && <div className="form-error" role="alert">Não foi possível concluir o cadastro: {error}</div>}
       <button className="primary" type="submit" disabled={status === 'loading'}>{status === 'loading' ? 'Criando cadastro...' : 'Começar meus 15 dias grátis'}</button>
-      <small className="legal">Sem cobrança para iniciar. Após os 15 dias, a continuidade exige implantação e ativação de R$ 1.000,00 + mensalidade de R$ 99,90.</small>
+      <small className="legal">Sem cobrança para iniciar. Após os 15 dias, a continuidade no lançamento será pela condição Heaven Fundadoras: R$ 69,90/mês + implantação única de R$ 197. Sem cobrança automática e sem cartão para testar.</small>
     </form>
   )
 }
