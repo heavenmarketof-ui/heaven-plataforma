@@ -9,7 +9,7 @@ function TrialPage() {
       <div className="trial-wrap">
         <div className="trial-card">
           <Link to="/" className="back">← Início</Link>
-          <div className="brand">heaven <small>PLATAFORMA</small></div>
+          <img src="/heaven-logo.svg" alt="Heaven ERP" className="trial-logo"/>
           <span className="tag">15 dias grátis</span>
           <h1>Crie seu ambiente Heaven</h1>
           <p>Teste o ERP completo por 15 dias. Você não precisa pagar para começar.</p>
@@ -17,11 +17,11 @@ function TrialPage() {
         </div>
         <aside className="price-card">
           <span>Após o período gratuito</span>
-          <strong>R$ 1.000,00</strong>
-          <p>implantação e ativação</p>
+          <strong>R$ 197</strong>
+          <p>implantação única</p>
           <div className="plus">+</div>
-          <strong>R$ 99,90 <small>/mês</small></strong>
-          <p>mensalidade da plataforma</p>
+          <strong>R$ 69,90 <small>/mês</small></strong>
+          <p>condição Heaven Fundadoras por 12 meses</p>
           <hr />
           <ul>
             <li>CRM e orçamentos</li>
