@@ -148,3 +148,45 @@
 .app-gate .primary-link{margin-top:10px}
 .app-gate .heaven-alert{text-align:left}
 @media(max-width:560px){.app-gate{padding:14px}.app-gate>div{padding:26px 20px}.auth-logo{width:190px}.app-gate h1{font-size:26px}}
+
+/* ERP internal — final visual rhythm */
+.erp-main{width:100%;min-width:0}
+.erp-main>.erp-header,.erp-main>.heaven-alert,.erp-main>.heaven-grid,.erp-main>.heaven-card,.erp-main>.workspace-tabs,.erp-main>.agenda-card,.erp-main>.settings-columns,.erp-main>.finance-grid{max-width:1380px;margin-left:auto;margin-right:auto}
+.erp-header{min-height:72px;align-items:flex-start}
+.erp-header .heaven-title{margin-top:6px;margin-bottom:4px}
+.erp-header .workspace-actions>button{border:1px solid var(--line);background:#fff;color:#52647c;border-radius:9px;padding:9px 12px;font-weight:700}
+.erp-main .heaven-kpis{gap:16px;margin-top:24px}
+.erp-main .heaven-kpis>.heaven-card{min-height:112px;display:flex;flex-direction:column;justify-content:center;padding:20px 22px}
+.erp-main .heaven-kpis>.heaven-card>small{color:#75869b;font-size:11px;font-weight:700}
+.erp-main .heaven-value{font-size:27px;letter-spacing:-.6px}
+.erp-main .module-card{margin-top:18px;padding:22px}
+.erp-main .card-head{min-height:38px;margin-bottom:8px}
+.erp-main .card-head h2{margin:0}
+.erp-main .table-scroll{width:100%;border-radius:10px}
+.erp-main .heaven-table{min-width:680px}
+.erp-main .heaven-table td{height:58px;vertical-align:middle}
+.erp-main .empty-state{min-height:160px;place-content:center;border:1px dashed #d8e1ec;border-radius:12px;margin-top:12px}
+.erp-main .workspace-tabs{gap:6px;margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;overflow:auto}
+.erp-main .workspace-tabs button{white-space:nowrap}
+.erp-main .workspace-tabs button.active{background:var(--navy);color:#fff}
+.erp-main .primary,.erp-main .primary-link{white-space:nowrap}
+.erp-main .heaven-alert{margin-top:18px}
+.erp-main .heaven-alert button{border:0;background:transparent;color:inherit;font-size:18px}
+.erp-sidebar .erp-nav b.erp-static,.erp-sidebar .erp-nav .active{background:#4169A9;color:#fff;font-weight:700;border-radius:10px;padding:11px 13px}
+.erp-sidebar .erp-nav b.erp-static{display:flex;align-items:center;gap:11px;font-size:12px}
+@media(max-width:900px){
+ .erp-main>.erp-header,.erp-main>.heaven-alert,.erp-main>.heaven-grid,.erp-main>.heaven-card,.erp-main>.workspace-tabs,.erp-main>.agenda-card,.erp-main>.settings-columns,.erp-main>.finance-grid{max-width:none}
+ .erp-sidebar{display:flex!important;width:100%;border-right:0;border-bottom:1px solid #294361}
+ .erp-sidebar-logo{border:0;padding:0 10px 0 0}
+ .erp-sidebar-logo img{width:142px}
+ .erp-nav{min-width:max-content}
+ .erp-main .heaven-table{min-width:640px}
+ .erp-main .module-card{padding:18px}
+}
+@media(max-width:560px){
+ .erp-header{min-height:0}
+ .erp-header .workspace-actions{width:100%}
+ .erp-main .heaven-kpis>.heaven-card{min-height:96px}
+ .erp-main .module-card{padding:15px}
+ .erp-main .card-head{gap:10px}
+}
