@@ -138,3 +138,13 @@
  .trial-logo{width:205px;margin-top:16px}
  .new-home .pricing-card{padding:24px 20px}
 }
+
+/* Auth utility screens */
+.app-gate>div{width:min(520px,100%)}
+.auth-logo{display:block;width:220px;max-width:80%;height:auto;margin:0 auto 24px}
+.app-gate h1{font-size:30px;letter-spacing:-.7px;margin:12px 0}
+.app-gate p{color:var(--muted);line-height:1.6}
+.app-gate .trial-form{text-align:left}
+.app-gate .primary-link{margin-top:10px}
+.app-gate .heaven-alert{text-align:left}
+@media(max-width:560px){.app-gate{padding:14px}.app-gate>div{padding:26px 20px}.auth-logo{width:190px}.app-gate h1{font-size:26px}}
