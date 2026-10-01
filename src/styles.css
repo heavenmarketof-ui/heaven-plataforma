@@ -190,3 +190,44 @@
  .erp-main .module-card{padding:15px}
  .erp-main .card-head{gap:10px}
 }
+
+/* Module-specific finishing: Commercial → Settings */
+.commercial-tabs,.finance-tabs{max-width:1380px;margin:22px auto 0;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px}
+.commercial-tabs button,.finance-tabs button{border:0;background:transparent;border-radius:8px;padding:10px 13px;color:#66788e;font-weight:700}
+.commercial-tabs button.active,.finance-tabs button.active{background:var(--navy);color:#fff}
+.commercial-tabs input,.finance-tabs input,.agenda-month{border:1px solid #d9e2ed;background:#fff;border-radius:9px;padding:10px 12px;outline:none}
+.commercial-tabs input:focus,.finance-tabs input:focus,.agenda-month:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4169A914}
+.sales-pipeline{max-width:1380px;margin:14px auto 0;gap:12px}
+.sales-column{min-width:230px;border-radius:14px}
+.customer-grid,.commercial-list,.finance-layout,.kit-builder-grid,.onboarding-grid{max-width:1380px;margin-left:auto;margin-right:auto}
+.agenda-card{margin-top:18px;padding:18px;overflow:auto}
+.agenda-weekdays,.agenda-calendar{min-width:820px}
+.agenda-day{min-height:112px}
+.agenda-list-event{width:100%;border:0;border-top:1px solid #edf1f6;background:transparent;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:14px;padding:13px 4px;text-align:left}
+.agenda-list-event:first-of-type{border-top:0}
+.kit-builder-grid{gap:14px}
+.kit-builder,.conflict-card{border-radius:13px}
+.availability-ok{border-radius:12px}
+.finance-layout{gap:16px;margin-top:14px}
+.finance-side{display:grid;gap:14px;align-content:start}
+.finance-row{min-height:70px}
+.finance-new{max-width:1380px!important;margin:18px auto 0!important}
+.settings-progress,.settings-tip{max-width:1380px!important}
+.settings-columns{gap:16px}
+.onboarding-grid{gap:12px}
+.onboarding-step{min-height:86px}
+.heaven-table th{padding:11px 8px;text-align:left;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#7b8b9f;border-bottom:1px solid #dfe6ef}
+.heaven-table textarea,.trial-form textarea{width:100%;border:1px solid #d7e0ec;background:#fff;border-radius:10px;padding:12px;outline:none;font:inherit;resize:vertical}
+.trial-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4169A914}
+@media(max-width:900px){
+ .commercial-tabs,.finance-tabs{max-width:none;overflow-x:auto;justify-content:flex-start}
+ .commercial-tabs input,.finance-tabs input{min-width:180px}
+ .sales-pipeline{max-width:none;overflow-x:auto;padding-bottom:8px}
+ .finance-layout{grid-template-columns:1fr!important}
+ .agenda-card{padding:12px}
+}
+@media(max-width:560px){
+ .commercial-tabs,.finance-tabs{margin-top:16px}
+ .agenda-list-event{grid-template-columns:42px 1fr}.agenda-list-event>em{grid-column:2}
+ .agenda-month{width:100%}
+}
