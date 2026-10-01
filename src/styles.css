@@ -100,3 +100,41 @@
 .pricing-page .new-footer{max-width:1180px}
 @media(max-width:900px){.plans-hero{padding-top:62px}.plans-hero h1{font-size:42px}.founder-card,.implementation,.pricing-faq{grid-template-columns:1fr}.feature-checks{grid-template-columns:1fr 1fr}.plans-grid{grid-template-columns:1fr}.official-card>p{min-height:0}.pricing-faq{gap:28px}.brand-position h2,.plans-heading h2{font-size:33px}}
 @media(max-width:560px){.plans-hero,.founder-wrap,.official-plans,.pricing-faq{padding-left:16px;padding-right:16px}.plans-hero{padding-top:48px;padding-bottom:48px}.plans-hero h1{font-size:35px;letter-spacing:-1.2px}.plans-hero br{display:none}.plans-hero p{font-size:15px}.founder-main,.founder-features{padding:28px 22px}.founder-price strong{font-size:44px}.feature-checks{grid-template-columns:1fr}.implementation{padding:24px;gap:24px}.brand-position{padding:65px 18px}.brand-position h2{font-size:29px}.official-plans{padding-top:65px;padding-bottom:65px}.plans-heading h2,.pricing-faq h2,.founder-cta h2{font-size:29px}.annual-explain{margin:0 16px 65px;padding:25px 18px}.pricing-faq{padding-bottom:65px}.founder-cta{margin:0 12px 65px;padding:42px 18px;border-radius:18px}}
+
+/* Public sales surfaces — final visual consistency */
+.new-home .new-header,.pricing-page .new-header{width:100%;max-width:1240px}
+.new-home section,.pricing-page section{scroll-margin-top:90px}
+.new-home .new-hero,.new-home .flow-grid,.new-home .new-pricing,.new-home .new-trial{width:100%}
+.new-home .hero-copy,.new-home .command-copy{min-width:0}
+.new-home .erp-preview,.new-home .command-panel,.new-home .pricing-card,.new-home .home-trial-form{min-width:0}
+.new-home .new-pricing{max-width:1180px;grid-template-columns:minmax(0,1fr) 400px;gap:72px}
+.new-home .new-trial{max-width:1124px}
+.new-home .pricing-card{padding:32px}
+.new-home .pricing-card .plus-price{font-size:34px;line-height:1.05;margin-top:20px}
+.new-home .pricing-card .setup-price{font-size:18px;margin:14px 0}
+.new-home .new-footer,.pricing-page .new-footer{width:calc(100% - 56px)}
+.trial-wrap{width:100%;max-width:1040px;gap:28px;padding:64px 28px}
+.trial-card,.price-card{padding:34px}
+.trial-logo{display:block;width:245px;max-width:82%;height:auto;margin:22px 0 16px}
+.login-card{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.login-card .back{align-self:flex-start}
+.price-card{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.price-card ul{padding-left:20px;line-height:1.8}
+.price-card>strong{line-height:1.18}
+.trial-form button{min-height:46px}
+.trial-form a{text-align:center;color:var(--blue);font-size:12px;font-weight:700}
+.login-help{text-align:center;font-size:12px!important;margin-top:18px}
+@media(max-width:900px){
+ .new-home .new-pricing{grid-template-columns:1fr;gap:34px}
+ .new-home .pricing-card{max-width:620px;width:100%;margin:auto}
+ .trial-wrap{max-width:720px;grid-template-columns:1fr;align-items:start;padding-top:38px}
+ .trial-card,.price-card{width:100%}
+}
+@media(max-width:560px){
+ .new-home .new-footer,.pricing-page .new-footer{width:calc(100% - 32px);padding-left:0;padding-right:0}
+ .trial-wrap{padding:18px 12px 36px;gap:14px}
+ .trial-card,.price-card{padding:22px 18px;border-radius:16px}
+ .trial-card h1{font-size:29px}
+ .trial-logo{width:205px;margin-top:16px}
+ .new-home .pricing-card{padding:24px 20px}
+}
